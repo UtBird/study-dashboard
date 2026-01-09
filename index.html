@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YÖKDİL & ALES Ultimate Planlayıcı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .phase-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .phase-section.active { display: block; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .checkbox-wrapper input:checked + div {
+            background-color: #10B981;
+            border-color: #10B981;
+            color: white;
+        }
+
+        /* Konu Listesi için Stil */
+        .topic-item input:checked + span {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen selection:bg-blue-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-slate-700 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-600 p-2 rounded-lg">
+                        <i class="fa-solid fa-terminal text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg tracking-tight text-white leading-none">MÜHENDİS YOLU</h1>
+                        <span class="text-xs text-blue-400 font-mono">v4.1_subject_list</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <div class="hidden md:flex flex-col items-end w-48">
+                        <div class="flex justify-between w-full text-xs mb-1">
+                            <span class="text-slate-400">Genel İlerleme</span>
+                            <span id="progressText" class="text-green-400 font-mono font-bold">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div id="totalProgress" class="h-full bg-gradient-to-r from-blue-500 to-green-400 w-0 transition-all duration-700 ease-out"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Dashboard / Sayaçlar -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <!-- YÖKDİL Kartı -->
+            <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-500/30 p-6 group hover:border-blue-500/60 transition-all">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i class="fa-solid fa-language text-9xl text-blue-400"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="bg-blue-600/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full border border-blue-500/30">HEDEF 1</span>
+                        <span class="text-xs text-slate-400 font-mono">2026</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-1">YÖKDİL / 1</h2>
+                    <p class="text-blue-200 mb-6 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> 8 Mart Pazar
+                    </p>
+                    <div class="bg-slate-900/50 rounded-lg p-3 border border-slate-700/50">
+                        <p class="text-xs text-slate-400 uppercase font-bold mb-1">Başvuru Tarihleri</p>
+                        <div class="flex items-center gap-2 text-red-400 font-mono font-bold">
+                            <i class="fa-solid fa-circle-exclamation animate-pulse"></i>
+                            21 - 29 Ocak
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALES Kartı -->
+            <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900/40 to-slate-900 border border-orange-500/30 p-6 group hover:border-orange-500/60 transition-all">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i class="fa-solid fa-brain text-9xl text-orange-400"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="bg-orange-600/20 text-orange-300 text-xs font-bold px-3 py-1 rounded-full border border-orange-500/30">HEDEF 2</span>
+                        <span class="text-xs text-slate-400 font-mono">2026</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-1">ALES / 1</h2>
+                    <p class="text-orange-200 mb-6 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> 10 Mayıs Pazar
+                    </p>
+                    <div class="bg-slate-900/50 rounded-lg p-3 border border-slate-700/50">
+                        <p class="text-xs text-slate-400 uppercase font-bold mb-1">Başvuru Tarihleri</p>
+                        <div class="flex items-center gap-2 text-orange-400 font-mono font-bold">
+                            <i class="fa-regular fa-clock"></i>
+                            25 Mart - 2 Nisan
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faz Kontrolcüsü (Tab Menu) -->
+        <div class="flex justify-center mb-8 overflow-x-auto">
+            <div class="bg-slate-900 p-1.5 rounded-xl border border-slate-700 inline-flex shadow-lg min-w-max">
+                <button onclick="switchTab('phase1')" id="tab-phase1" class="px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 bg-blue-600 text-white shadow-lg">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                    YÖKDİL PROGRAMI
+                </button>
+                <button onclick="switchTab('phase2')" id="tab-phase2" class="px-6 py-3 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-rocket"></i>
+                    ALES PROGRAMI
+                </button>
+                <button onclick="switchTab('subjects')" id="tab-subjects" class="px-6 py-3 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check"></i>
+                    KONU LİSTESİ (TÜMÜ)
+                </button>
+            </div>
+        </div>
+
+        <!-- FAZ 1 İÇERİĞİ -->
+        <div id="phase1" class="phase-section active">
+            <div class="bg-blue-900/10 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">
+                <p class="text-blue-200 text-sm">
+                    <strong>🎯 Strateji:</strong> 8 Mart'a kadar önceliğimiz İngilizce gramer ve okuma. ALES için sadece haftada 3 gün "Video Taktik" izleyerek zihni sıcak tutuyoruz.
+                </p>
+            </div>
+            <div id="phase1-container" class="space-y-4"></div>
+        </div>
+
+        <!-- FAZ 2 İÇERİĞİ -->
+        <div id="phase2" class="phase-section">
+            <div class="bg-orange-900/10 border-l-4 border-orange-500 p-4 mb-6 rounded-r-lg">
+                <p class="text-orange-200 text-sm">
+                    <strong>🔥 Strateji:</strong> İngilizce bitti. Şimdi ALES Sayısal Mantık ve Hız problemlerine abanıyoruz. Bol deneme çözülecek.
+                </p>
+            </div>
+            <div id="phase2-container" class="space-y-4"></div>
+        </div>
+
+        <!-- YENİ SEKMESİ: KONU LİSTELERİ -->
+        <div id="subjects" class="phase-section">
+            <div class="bg-purple-900/10 border-l-4 border-purple-500 p-4 mb-6 rounded-r-lg">
+                <p class="text-purple-200 text-sm">
+                    <strong>📋 Müfredat Takip:</strong> Bitirdiğin konuların yanındaki kutucuğa tik atarak ilerlemeni görebilirsin.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- YÖKDİL Sütunu -->
+                <div class="bg-slate-900 rounded-xl border border-slate-700 p-6 h-fit">
+                    <h3 class="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2 pb-3 border-b border-slate-700">
+                        <i class="fa-solid fa-language"></i> YÖKDİL MÜFREDATI
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Temel Gramer</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="yokdil-grammar-list">
+                                <!-- JS ile dolacak -->
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">İleri Yapılar</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="yokdil-advanced-list"></ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Soru Tipleri (Skills)</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="yokdil-skills-list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALES MATEMATİK Sütunu -->
+                <div class="bg-slate-900 rounded-xl border border-slate-700 p-6 h-fit">
+                    <h3 class="text-xl font-bold text-orange-400 mb-4 flex items-center gap-2 pb-3 border-b border-slate-700">
+                        <i class="fa-solid fa-calculator"></i> ALES MATEMATİK
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Cebir & Sayılar</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="ales-algebra-list"></ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Problemler (Kritik)</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="ales-problems-list"></ul>
+                        </div>
+                         <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Sayısal Mantık & Geo</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="ales-logic-list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALES TÜRKÇE Sütunu -->
+                <div class="bg-slate-900 rounded-xl border border-slate-700 p-6 h-fit">
+                    <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center gap-2 pb-3 border-b border-slate-700">
+                        <i class="fa-solid fa-book-open"></i> ALES TÜRKÇE
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-500 uppercase mb-2">Anlam Bilgisi</h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="ales-turkish-list"></ul>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 mt-4">
+                            <p class="text-xs text-slate-400 italic">
+                                💡 <strong>Mühendis Notu:</strong> ALES Türkçe'de dil bilgisi (cümlenin ögeleri vs.) çıkmaz. Sadece anlam ve mantık sorulur. Boşuna konu çalışma!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JS Mantığı -->
+    <script>
+        // --- HAFTALIK PLAN VERİSİ ---
+        const plan = {
+            phase1: [
+                {
+                    title: "HAFTA 1: Temel Atma (Tenses & Modals)",
+                    date: "12 - 18 Ocak 2026",
+                    focus: "Gramer",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Simple Present & Present Continuous Video İzle. Kelime defteri oluştur (İlk 20 kelime).", check: "w1d1" },
+                        { day: "Salı", task: "YÖKDİL: Past Tenses (Simple Past, Past Cont). 30 Soru Çöz. | 📺 ALES: 'Sayı Problemleri' Video İzle (30 dk).", check: "w1d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: Future Tenses. Zaman ifadelerini (Time expr.) ezberle. | 🛠️ Kodlama Zamanı.", check: "w1d3" },
+                        { day: "Perşembe", task: "YÖKDİL: Modals (Can, Could, Must, Should). 40 Soru Çöz. | 📺 ALES: 'Yeni Nesil Denklem' Video İzle.", check: "w1d4" },
+                        { day: "Cuma", task: "YÖKDİL: Perfect Tenses (Present Perfect). En önemli konu! 50 Soru Çöz.", check: "w1d5" },
+                        { day: "Cumartesi", task: "🎯 DENEME: Mini YÖKDİL Denemesi (İlk 20 soru tipi). Analiz Yap.", check: "w1d6" },
+                        { day: "Pazar", task: "TEKRAR: Kelime Defterini oku. | 📺 ALES: Sayısal Mantık 1 Video.", check: "w1d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 2: Cümle Yapıları (Passive & If)",
+                    date: "19 - 25 Ocak 2026",
+                    focus: "Yapı Bilgisi",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Passive Voice (Edilgen). 'Be + V3' yapısını metinlerde bul.", check: "w2d1" },
+                        { day: "Salı", task: "YÖKDİL: Causatives (Ettirgen). 30 Soru. | 📺 ALES: 'Yaş Problemleri' Taktik Video.", check: "w2d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: If Clauses (Type 0, 1, 2). Formülleri ezberleme, mantığı kap. | 🚨 YÖKDİL BAŞVURUSU YAP!", check: "w2d3" },
+                        { day: "Perşembe", task: "YÖKDİL: If Clauses (Type 3 & Mixed). 40 Soru. | 📺 ALES: 'Grafik Okuma' Video.", check: "w2d4" },
+                        { day: "Cuma", task: "YÖKDİL: Okuma Günü. Kendi alanında (Fen/Sosyal) 2 makale oku.", check: "w2d5" },
+                        { day: "Cumartesi", task: "🎯 TARAMA: Tense + Modal + Passive karışık 60 soru çöz.", check: "w2d6" },
+                        { day: "Pazar", task: "Kelime Tekrarı (50 Kelimeye ulaş). | 📺 ALES: Mantık Sorusu Çöz.", check: "w2d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 3: Uzun Cümleler (Clauses)",
+                    date: "26 Ocak - 1 Şubat 2026",
+                    focus: "Çeviri",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Noun Clauses (That, What, Who). Cümlenin öznesini bulma.", check: "w3d1" },
+                        { day: "Salı", task: "YÖKDİL: Relative Clauses (Who, Which, That). 40 Soru. | 📺 ALES: 'Hız Problemleri' Video.", check: "w3d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: Reductions (Kısaltmalar). Zor konudur, dikkatli izle. | 🛠️ Proje Günü.", check: "w3d3" },
+                        { day: "Perşembe", task: "YÖKDİL: Çeviri Soruları Taktikleri. Yüklemden yakalama. | 📺 ALES: 'Şekil Yetenek' Video.", check: "w3d4" },
+                        { day: "Cuma", task: "YÖKDİL: Cümle Tamamlama (İlk bakış). Bağlaçsız çözme.", check: "w3d5" },
+                        { day: "Cumartesi", task: "🎯 DENEME: Geçmiş Yıl Çıkmış Sorular (İlk 40 soru).", check: "w3d6" },
+                        { day: "Pazar", task: "Analiz ve Dinlenme. Başvuruyu kontrol et (Son günler!).", check: "w3d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 4: BAĞLAÇLAR (Kritik Hafta)",
+                    date: "2 - 8 Şubat 2026",
+                    focus: "Puan Deposu",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Zıtlık Bağlaçları (However, Although, Despite). Liste yap.", check: "w4d1" },
+                        { day: "Salı", task: "YÖKDİL: Sebep-Sonuç (Because, Therefore, Thus). 40 Soru. | 📺 ALES: 'İşçi Problemleri'.", check: "w4d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: Ek Bilgi & Örnekleme (Moreover, For example). | 🛠️ Kodlama Serbest.", check: "w4d3" },
+                        { day: "Perşembe", task: "YÖKDİL: Zaman & Koşul Bağlaçları (When, While, Unless). | 📺 ALES: 'Mantık-Tablo'.", check: "w4d4" },
+                        { day: "Cuma", task: "YÖKDİL: Cümle Tamamlama (Bağlaç Odaklı). En çok buradan soru gelir.", check: "w4d5" },
+                        { day: "Cumartesi", task: "🎯 BAĞLAÇ KAMPI: 100 Soru Bağlaç çözümü (Karma).", check: "w4d6" },
+                        { day: "Pazar", task: "Kelime: Bağlaç listesini duvarına as. | 📺 ALES: Sözel Mantık (Çerez niyetine).", check: "w4d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 5: Edatlar ve Kelime",
+                    date: "9 - 15 Şubat 2026",
+                    focus: "Ezber",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Prepositions (In, On, At, By). Kalıp ifadeler.", check: "w5d1" },
+                        { day: "Salı", task: "YÖKDİL: Gerund / Infinitive (To go vs Going). 30 Soru. | 📺 ALES: 'Karışım Problemleri'.", check: "w5d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: Phrasal Verbs (Carry out, Find out). En çok çıkan 20 tanesi.", check: "w5d3" },
+                        { day: "Perşembe", task: "YÖKDİL: Cloze Test Taktikleri (Boşluk doldurma). | 📺 ALES: 'Küp/Zar Soruları'.", check: "w5d4" },
+                        { day: "Cuma", task: "YÖKDİL: Kelime Tekrarı (Synonyms - Eş Anlamlılar).", check: "w5d5" },
+                        { day: "Cumartesi", task: "🎯 DENEME: Süre tutarak 80 soruluk deneme çöz.", check: "w5d6" },
+                        { day: "Pazar", task: "Deneme Analizi. Yanlış yaptığın konuları not al.", check: "w5d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 6: Okuma ve Soru Tipleri",
+                    date: "16 - 22 Şubat 2026",
+                    focus: "Skill",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: Paragraf Tamamlama & Akışı Bozan Cümle.", check: "w6d1" },
+                        { day: "Salı", task: "YÖKDİL: Yakın Anlamlı Cümle (Restatement). | 📺 ALES: 'Permütasyon' (Zorlama).", check: "w6d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: Okuma Parçası (Reading). Günde 3 parça analiz.", check: "w6d3" },
+                        { day: "Perşembe", task: "YÖKDİL: Reading Taktikleri (Skimming & Scanning). | 📺 ALES: 'Olasılık'.", check: "w6d4" },
+                        { day: "Cuma", task: "YÖKDİL: 60 Soru karışık deneme (Fen/Sosyal alanına göre).", check: "w6d5" },
+                        { day: "Cumartesi", task: "🎯 FULL DENEME: Sabah 10:00'da başla. Telefon kapalı.", check: "w6d6" },
+                        { day: "Pazar", task: "Haftalık Analiz. Kelime tekrarı. | 📺 ALES: Geometri (Üçgenler).", check: "w6d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 7: Son Viraj (Full Deneme)",
+                    date: "23 Şubat - 1 Mart 2026",
+                    focus: "Hız",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL: 2019-2020 Çıkmış Soruları Çöz.", check: "w7d1" },
+                        { day: "Salı", task: "YÖKDİL: 2021 Çıkmış Soruları Çöz. | 📺 ALES: Geometri (Dörtgenler).", check: "w7d2" },
+                        { day: "Çarşamba", task: "YÖKDİL: 2022 Çıkmış Soruları Çöz.", check: "w7d3" },
+                        { day: "Perşembe", task: "YÖKDİL: 2023 Çıkmış Soruları Çöz. | 📺 ALES: Geometri (Çember).", check: "w7d4" },
+                        { day: "Cuma", task: "YÖKDİL: Yanlış defterini baştan sona oku. Kelimelere bak.", check: "w7d5" },
+                        { day: "Cumartesi", task: "🎯 SON PROVA: 2025 veya 2024 Çıkmış Soruları (Sınav ciddiyetiyle).", check: "w7d6" },
+                        { day: "Pazar", task: "Dinlenme & Motivasyon. Sınav yerini öğren.", check: "w7d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 8: SINAV HAFTASI",
+                    date: "2 - 8 Mart 2026",
+                    focus: "Final",
+                    days: [
+                        { day: "Pazartesi", task: "Son tekrarlar. Yeni konu çalışma.", check: "w8d1" },
+                        { day: "Salı", task: "Bağlaç listesini son kez gözden geçir.", check: "w8d2" },
+                        { day: "Çarşamba", task: "Hafif okuma yap. Proje işlerini azalt.", check: "w8d3" },
+                        { day: "Perşembe", task: "Çıkmış sorulardaki kelimelere göz at.", check: "w8d4" },
+                        { day: "Cuma", task: "Fiziksel ve zihinsel dinlenme.", check: "w8d5" },
+                        { day: "Cumartesi", task: "Erken yatış. Sınav belgelerini hazırla.", check: "w8d6" },
+                        { day: "Pazar", task: "🚀 YÖKDİL SINAVI (Başarılar Mühendis Bey!)", check: "w8d7" }
+                    ]
+                }
+            ],
+            phase2: [
+                {
+                    title: "HAFTA 9: ALES Start (Temel Konular)",
+                    date: "9 - 15 Mart 2026",
+                    focus: "Matematik",
+                    days: [
+                        { day: "Pazartesi", task: "YÖKDİL Yorgunluğu atma. ALES planını gözden geçir.", check: "w9d1" },
+                        { day: "Salı", task: "ALES: Temel Kavramlar & Sayı Basamakları (Hızlı tekrar).", check: "w9d2" },
+                        { day: "Çarşamba", task: "ALES: Bölme-Bölünebilme & Asal Çarpanlar.", check: "w9d3" },
+                        { day: "Perşembe", task: "ALES: Rasyonel & Ondalık Sayılar (İşlem hatası yapma!).", check: "w9d4" },
+                        { day: "Cuma", task: "ALES: Basit Eşitsizlikler & Mutlak Değer.", check: "w9d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 1: Seviye tespiti yap (Süre tutma).", check: "w9d6" },
+                        { day: "Pazar", task: "Analiz. Türkçe Paragraf Rutinine başla (Günde 20 soru).", check: "w9d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 10: Denklem & Üslü-Köklü",
+                    date: "16 - 22 Mart 2026",
+                    focus: "Cebir",
+                    days: [
+                        { day: "Pazartesi", task: "ALES: Üslü Sayılar (Yeni nesil sorular).", check: "w10d1" },
+                        { day: "Salı", task: "ALES: Köklü Sayılar (Kök dışına çıkarma).", check: "w10d2" },
+                        { day: "Çarşamba", task: "ALES: Çarpanlara Ayırma (Hız kazandırır).", check: "w10d3" },
+                        { day: "Perşembe", task: "ALES: Oran - Orantı (Problemlerin temeli).", check: "w10d4" },
+                        { day: "Cuma", task: "ALES: Denklem Çözme Pratikleri.", check: "w10d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 2: Süre tutmaya başla.", check: "w10d6" },
+                        { day: "Pazar", task: "Paragraf çöz (20 soru).", check: "w10d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 11: Problemler 1 (Başvuru Haftası)",
+                    date: "23 - 29 Mart 2026",
+                    focus: "Problemler",
+                    days: [
+                        { day: "Pazartesi", task: "🚨 ALES BAŞVURUSU YAP (25 Mart'ta açılıyor). Sayı Problemleri.", check: "w11d1" },
+                        { day: "Salı", task: "ALES: Kesir Problemleri (Şekilli sorular).", check: "w11d2" },
+                        { day: "Çarşamba", task: "ALES: Yaş Problemleri (Tablo kurma).", check: "w11d3" },
+                        { day: "Perşembe", task: "ALES: İşçi - Havuz Problemleri (Formülsüz çözüm).", check: "w11d4" },
+                        { day: "Cuma", task: "ALES: Hareket (Hız) Problemleri. (Mühendis işi).", check: "w11d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 3: Çıkmış sorulardan çöz.", check: "w11d6" },
+                        { day: "Pazar", task: "Sayısal Mantık videosu izle.", check: "w11d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 12: Problemler 2 (Karışım & Yüzde)",
+                    date: "30 Mart - 5 Nisan 2026",
+                    focus: "Problemler",
+                    days: [
+                        { day: "Pazartesi", task: "ALES: Yüzde Problemleri. Kar-Zarar hesapları.", check: "w12d1" },
+                        { day: "Salı", task: "ALES: Karışım Problemleri. 🚨 Başvuru için SON GÜN (2 Nisan).", check: "w12d2" },
+                        { day: "Çarşamba", task: "ALES: Grafik Problemleri (Daire/Sütun grafiği).", check: "w12d3" },
+                        { day: "Perşembe", task: "ALES: Rutin Olmayan Problemler (Muhakeme).", check: "w12d4" },
+                        { day: "Cuma", task: "ALES: Kümeler.", check: "w12d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 4.", check: "w12d6" },
+                        { day: "Pazar", task: "Mantık - Grafik okuma çalışmaları.", check: "w12d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 13: Fonksiyon & İşlem",
+                    date: "6 - 12 Nisan 2026",
+                    focus: "Cebir",
+                    days: [
+                        { day: "Pazartesi", task: "ALES: Fonksiyonlar (Grafik yorumlama).", check: "w13d1" },
+                        { day: "Salı", task: "ALES: İşlem & Modüler Aritmetik.", check: "w13d2" },
+                        { day: "Çarşamba", task: "ALES: Diziler ve Seriler (Örüntü yakalama).", check: "w13d3" },
+                        { day: "Perşembe", task: "ALES: Olasılık (Temel düzey).", check: "w13d4" },
+                        { day: "Cuma", task: "ALES: Permütasyon - Kombinasyon.", check: "w13d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 5.", check: "w13d6" },
+                        { day: "Pazar", task: "Analiz.", check: "w13d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 14: SAYISAL MANTIK (Kral Konu)",
+                    date: "13 - 19 Nisan 2026",
+                    focus: "Mantık",
+                    days: [
+                        { day: "Pazartesi", task: "Sayısal Mantık: Şekil Yetenek.", check: "w14d1" },
+                        { day: "Salı", task: "Sayısal Mantık: Sayı Yerleştirme (Sudoku mantığı).", check: "w14d2" },
+                        { day: "Çarşamba", task: "Sayısal Mantık: Tablo Yorumlama.", check: "w14d3" },
+                        { day: "Perşembe", task: "Sayısal Mantık: Küp Sayma / Katlama.", check: "w14d4" },
+                        { day: "Cuma", task: "Sayısal Mantık: Oyun/Turnuva soruları.", check: "w14d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 6.", check: "w14d6" },
+                        { day: "Pazar", task: "Mantık tekrarı.", check: "w14d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 15: Geometri",
+                    date: "20 - 26 Nisan 2026",
+                    focus: "Geometri",
+                    days: [
+                        { day: "Pazartesi", task: "Geometri: Üçgenler (Açı, Kenar, Benzerlik).", check: "w15d1" },
+                        { day: "Salı", task: "Geometri: Özel Üçgenler & Alan.", check: "w15d2" },
+                        { day: "Çarşamba", task: "Geometri: Çokgenler & Dörtgenler.", check: "w15d3" },
+                        { day: "Perşembe", task: "Geometri: Kare, Dikdörtgen (Katlama soruları).", check: "w15d4" },
+                        { day: "Cuma", task: "Geometri: Çember & Daire (Analitik yok).", check: "w15d5" },
+                        { day: "Cumartesi", task: "🎯 ALES DENEME 7.", check: "w15d6" },
+                        { day: "Pazar", task: "Geometri formül tekrarı.", check: "w15d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 16: Hızlanma Kampı",
+                    date: "27 Nisan - 3 Mayıs 2026",
+                    focus: "Hız",
+                    days: [
+                        { day: "Pazartesi", task: "Her gün 1 ALES Denemesi (2020 Çıkmış).", check: "w16d1" },
+                        { day: "Salı", task: "Her gün 1 ALES Denemesi (2021 Çıkmış).", check: "w16d2" },
+                        { day: "Çarşamba", task: "Her gün 1 ALES Denemesi (2022 Çıkmış).", check: "w16d3" },
+                        { day: "Perşembe", task: "Her gün 1 ALES Denemesi (2023 Çıkmış).", check: "w16d4" },
+                        { day: "Cuma", task: "Eksik olduğun konuya son bakış.", check: "w16d5" },
+                        { day: "Cumartesi", task: "Sayısal Mantık kampı (Sadece mantık çöz).", check: "w16d6" },
+                        { day: "Pazar", task: "Dinlenme.", check: "w16d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 17: FİNAL HAFTASI",
+                    date: "4 - 10 Mayıs 2026",
+                    focus: "Final",
+                    days: [
+                        { day: "Pazartesi", task: "Son 1 Deneme (2024/2025).", check: "w17d1" },
+                        { day: "Salı", task: "Çıkmış soruların analizi.", check: "w17d2" },
+                        { day: "Çarşamba", task: "Formül kağıdını oku. Zorlama.", check: "w17d3" },
+                        { day: "Perşembe", task: "Kafa dağıt. Projelerle ilgilenme.", check: "w17d4" },
+                        { day: "Cuma", task: "Fiziksel dinlenme.", check: "w17d5" },
+                        { day: "Cumartesi", task: "Sınav yerine git bak. Erken uyu.", check: "w17d6" },
+                        { day: "Pazar", task: "🚀 ALES SINAVI (Başarılar!)", check: "w17d7" }
+                    ]
+                }
+            ]
+        };
+
+        // --- KONU LİSTESİ VERİLERİ (Checklist İçin) ---
+        const subjects = {
+            yokdil: {
+                grammar: ["Tenses (Zamanlar)", "Modals (Kipler)", "Passive Voice & Causatives", "Conjunctions (Bağlaçlar)", "Adjectives & Adverbs", "Relative Clauses", "Noun Clauses", "Gerund & Infinitive", "Prepositions", "Pronouns"],
+                advanced: ["Reduction (Kısaltmalar)", "Inversion (Devrik Cümle)", "Participles", "If & Wish Clauses"],
+                skills: ["Kelime (Vocabulary)", "Çeviri Soruları", "Cümle Tamamlama", "Paragraf", "Cloze Test", "Yakın Anlam (Restatement)", "Roma Rakamı (Akışı Bozan)"]
+            },
+            alesMath: {
+                algebra: ["Temel Kavramlar", "Bölme & Bölünebilme", "EBOB - EKOK", "Rasyonel Sayılar", "Basit Eşitsizlikler", "Mutlak Değer", "Üslü Sayılar", "Köklü Sayılar", "Çarpanlara Ayırma", "Oran - Orantı"],
+                problems: ["Sayı Problemleri", "Kesir Problemleri", "Yaş Problemleri", "İşçi & Havuz Problemleri", "Hız (Hareket) Problemleri", "Yüzde - Kar - Zarar", "Karışım Problemleri", "Grafik Problemleri"],
+                logic: ["Kümeler", "Fonksiyonlar", "İşlem & Modüler Aritmetik", "Permütasyon & Kombinasyon", "Olasılık", "Sayısal Mantık (Şekil)", "Sayısal Mantık (Grafik/Tablo)"],
+                geometry: ["Üçgenler", "Çokgenler & Dörtgenler", "Çember & Daire", "Analitik Geometri", "Katı Cisimler"]
+            },
+            alesTurkish: {
+                meaning: ["Sözcükte Anlam", "Cümlede Anlam", "Paragraf (Ana Düşünce)", "Paragraf (Yardımcı Düşünce)", "Paragraf (Yapı/Akış)", "Paragrafı İkiye Bölme"],
+                logic: ["Sözel Mantık (Tablo Kurma)", "Sözel Mantık (Sıralama)"]
+            }
+        };
+
+        function renderPlan() {
+            // Faz 1
+            const p1El = document.getElementById("phase1-container");
+            p1El.innerHTML = plan.phase1.map((week, i) => createWeekHTML(week, i, 'phase1')).join('');
+            
+            // Faz 2
+            const p2El = document.getElementById("phase2-container");
+            p2El.innerHTML = plan.phase2.map((week, i) => createWeekHTML(week, i, 'phase2')).join('');
+            
+            // Konu Listelerini Doldur
+            fillSubjectList('yokdil-grammar-list', subjects.yokdil.grammar, 'yok-gr');
+            fillSubjectList('yokdil-advanced-list', subjects.yokdil.advanced, 'yok-adv');
+            fillSubjectList('yokdil-skills-list', subjects.yokdil.skills, 'yok-skill');
+            
+            fillSubjectList('ales-algebra-list', subjects.alesMath.algebra, 'ales-alg');
+            fillSubjectList('ales-problems-list', subjects.alesMath.problems, 'ales-prob');
+            fillSubjectList('ales-logic-list', subjects.alesMath.logic.concat(subjects.alesMath.geometry), 'ales-log'); // Geo'yu birleştirdim yer tasarrufu için
+            
+            fillSubjectList('ales-turkish-list', subjects.alesTurkish.meaning.concat(subjects.alesTurkish.logic), 'ales-tr');
+
+            // Kayıtlı verileri yükle
+            loadStatus();
+        }
+
+        function createWeekHTML(week, index, phase) {
+            return `
+            <details class="group bg-slate-900 border border-slate-700 rounded-xl overflow-hidden transition-all duration-300 hover:border-blue-500/50 open:bg-slate-800 open:shadow-xl open:border-blue-500">
+                <summary class="flex items-center justify-between p-5 cursor-pointer select-none">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-800 p-2 rounded-lg border border-slate-700 group-open:bg-blue-600 group-open:text-white transition-colors">
+                            <i class="fa-regular fa-calendar-check text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-open:text-blue-400">${week.title}</h3>
+                            <div class="flex items-center gap-3 text-sm text-slate-400">
+                                <span><i class="fa-regular fa-clock text-xs mr-1"></i>${week.date}</span>
+                                <span class="bg-slate-700/50 px-2 py-0.5 rounded text-xs border border-slate-600">${week.focus}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-mono text-slate-500 group-open:hidden">GÖSTER</span>
+                        <i class="fa-solid fa-chevron-down text-slate-500 transition-transform group-open:rotate-180"></i>
+                    </div>
+                </summary>
+                
+                <div class="border-t border-slate-700/50 bg-slate-900/50 p-4">
+                    <div class="grid gap-3">
+                        ${week.days.map(day => `
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-800/80 transition-colors border border-transparent hover:border-slate-700">
+                                <label class="checkbox-wrapper cursor-pointer relative mt-1">
+                                    <input type="checkbox" id="${day.check}" class="peer sr-only" onchange="toggleTask('${day.check}')">
+                                    <div class="w-5 h-5 border-2 border-slate-600 rounded flex items-center justify-center peer-hover:border-blue-400 transition-all bg-slate-900">
+                                        <i class="fa-solid fa-check text-xs hidden"></i>
+                                    </div>
+                                </label>
+                                <div>
+                                    <span class="block font-bold text-sm text-slate-300 mb-0.5">${day.day}</span>
+                                    <p class="text-sm text-slate-400 leading-snug">${day.task}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </details>
+            `;
+        }
+
+        function fillSubjectList(elementId, items, prefix) {
+            const list = document.getElementById(elementId);
+            list.innerHTML = items.map((item, i) => `
+                <li class="topic-item flex items-center gap-3 group hover:bg-slate-800/50 p-1.5 rounded transition-colors">
+                    <label class="checkbox-wrapper cursor-pointer relative flex items-center gap-3 w-full">
+                        <input type="checkbox" id="subj-${prefix}-${i}" class="peer sr-only" onchange="toggleTask('subj-${prefix}-${i}')">
+                        <div class="w-4 h-4 border-2 border-slate-600 rounded flex items-center justify-center peer-hover:border-purple-400 transition-all bg-slate-900 shrink-0">
+                            <i class="fa-solid fa-check text-[10px] hidden"></i>
+                        </div>
+                        <span class="text-slate-300 group-hover:text-white transition-colors select-none">${item}</span>
+                    </label>
+                </li>
+            `).join('');
+        }
+
+        function switchTab(phase) {
+            document.querySelectorAll('.phase-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(phase).classList.add('active');
+            
+            const btn1 = document.getElementById('tab-phase1');
+            const btn2 = document.getElementById('tab-phase2');
+            const btn3 = document.getElementById('tab-subjects');
+            
+            // Reset Styles
+            [btn1, btn2, btn3].forEach(btn => {
+                btn.className = "px-6 py-3 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-all duration-300 flex items-center gap-2";
+            });
+
+            // Active Style
+            const activeBtn = document.getElementById('tab-' + phase);
+            let activeColor = 'bg-blue-600';
+            if(phase === 'phase2') activeColor = 'bg-orange-600';
+            if(phase === 'subjects') activeColor = 'bg-purple-600';
+
+            activeBtn.className = `px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 text-white shadow-lg ${activeColor}`;
+        }
+
+        function toggleTask(id) {
+            const cb = document.getElementById(id);
+            if(cb.checked) localStorage.setItem(id, 'done');
+            else localStorage.removeItem(id);
+            updateProgress();
+        }
+
+        function loadStatus() {
+            const inputs = document.querySelectorAll('input[type="checkbox"]');
+            inputs.forEach(input => {
+                if(localStorage.getItem(input.id) === 'done') input.checked = true;
+            });
+            updateProgress();
+        }
+
+        function updateProgress() {
+            // Sadece Haftalık Görevleri say (w ile başlayanlar), konu listelerini sayma (subj ile başlayanlar)
+            // Ya da hepsini sayabilirsin, ben sadece haftalıkları sayıyorum ki ilerleme çubuğu programı göstersin.
+            const total = document.querySelectorAll('input[id^="w"]').length;
+            const checked = document.querySelectorAll('input[id^="w"]:checked').length;
+            const percent = Math.round((checked / total) * 100) || 0;
+            
+            document.getElementById('totalProgress').style.width = percent + '%';
+            document.getElementById('progressText').innerText = percent + '%';
+        }
+
+        // Init
+        renderPlan();
+    </script>
+</body>
+</html>
