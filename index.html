@@ -41,6 +41,10 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .checkbox-wrapper input:checked + div i {
+            display: block !important;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen selection:bg-blue-500 selection:text-white">
@@ -55,7 +59,7 @@
                     </div>
                     <div>
                         <h1 class="font-bold text-lg tracking-tight text-white leading-none">MÜHENDİS YOLU</h1>
-                        <span class="text-xs text-blue-400 font-mono">v4.1_subject_list</span>
+                        <span class="text-xs text-blue-400 font-mono">v4.2_cognitive_focus</span>
                     </div>
                 </div>
                 
@@ -77,7 +81,7 @@
     <main class="max-w-7xl mx-auto px-4 py-8">
 
         <!-- Dashboard / Sayaçlar -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <!-- YÖKDİL Kartı -->
             <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-500/30 p-6 group hover:border-blue-500/60 transition-all">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -88,15 +92,15 @@
                         <span class="bg-blue-600/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full border border-blue-500/30">HEDEF 1</span>
                         <span class="text-xs text-slate-400 font-mono">2026</span>
                     </div>
-                    <h2 class="text-3xl font-bold text-white mb-1">YÖKDİL / 1</h2>
+                    <h2 class="text-3xl font-bold text-white mb-1">YÖKDİL / 2</h2>
                     <p class="text-blue-200 mb-6 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 8 Mart Pazar
+                        <i class="fa-regular fa-calendar"></i> 9 Ağustos Pazar
                     </p>
                     <div class="bg-slate-900/50 rounded-lg p-3 border border-slate-700/50">
                         <p class="text-xs text-slate-400 uppercase font-bold mb-1">Başvuru Tarihleri</p>
-                        <div class="flex items-center gap-2 text-red-400 font-mono font-bold">
-                            <i class="fa-solid fa-circle-exclamation animate-pulse"></i>
-                            21 - 29 Ocak
+                        <div class="flex items-center gap-2 text-emerald-400 font-mono font-bold">
+                            <i class="fa-solid fa-circle-check"></i>
+                            16 - 24 Haziran (Başvurular Açık!)
                         </div>
                     </div>
                 </div>
@@ -112,18 +116,41 @@
                         <span class="bg-orange-600/20 text-orange-300 text-xs font-bold px-3 py-1 rounded-full border border-orange-500/30">HEDEF 2</span>
                         <span class="text-xs text-slate-400 font-mono">2026</span>
                     </div>
-                    <h2 class="text-3xl font-bold text-white mb-1">ALES / 1</h2>
+                    <h2 class="text-3xl font-bold text-white mb-1">ALES / 3</h2>
                     <p class="text-orange-200 mb-6 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 10 Mayıs Pazar
+                        <i class="fa-regular fa-calendar"></i> 29 Kasım Pazar
                     </p>
                     <div class="bg-slate-900/50 rounded-lg p-3 border border-slate-700/50">
                         <p class="text-xs text-slate-400 uppercase font-bold mb-1">Başvuru Tarihleri</p>
                         <div class="flex items-center gap-2 text-orange-400 font-mono font-bold">
                             <i class="fa-regular fa-clock"></i>
-                            25 Mart - 2 Nisan
+                            7 - 15 Ekim
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Bilişsel Yük Yönetimi Bildirimi -->
+        <div class="bg-slate-900/80 border border-blue-500/30 rounded-2xl p-5 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl backdrop-blur-md">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-600/10 p-3 rounded-lg border border-blue-500/30 text-blue-400 shrink-0">
+                    <i class="fa-solid fa-brain text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-base text-white">Bilişsel Yük Yönetimi & Günlük Akış</h3>
+                    <p class="text-xs text-slate-400 mt-1 max-w-4xl leading-relaxed">
+                        10:00 - 16:00 saatleri arasındaki yüksek odaklı teknik/AI çalışma bloğunuz korunmaktadır. Bilişsel yükü optimize etmek amacıyla sınav hazırlığı sadece sabah erken saatlerde <strong>(07:00 - 08:30 / Deep Work)</strong> ve akşam saatlerinde <strong>(18:00 - 20:00 / Pekiştirme & Analiz)</strong> olacak şekilde iki seansa bölünmüştür.
+                    </p>
+                </div>
+            </div>
+            <div class="flex gap-2 shrink-0">
+                <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1.5 rounded-lg border border-amber-500/30 font-bold flex items-center gap-1">
+                    <i class="fa-regular fa-sun"></i> Sabah: Deep Work
+                </span>
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1.5 rounded-lg border border-indigo-500/30 font-bold flex items-center gap-1">
+                    <i class="fa-regular fa-moon"></i> Akşam: Pekiştirme
+                </span>
             </div>
         </div>
 
@@ -251,243 +278,324 @@
         const plan = {
             phase1: [
                 {
-                    title: "HAFTA 1: Temel Atma (Tenses & Modals)",
-                    date: "12 - 18 Ocak 2026",
-                    focus: "Gramer",
+                    title: "HAFTA 1: YÖKDİL Başlangıç & Isınma",
+                    date: "18 - 21 Haziran 2026",
+                    focus: "Okuma & Isınma",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Simple Present & Present Continuous Video İzle. Kelime defteri oluştur (İlk 20 kelime).", check: "w1d1" },
-                        { day: "Salı", task: "YÖKDİL: Past Tenses (Simple Past, Past Cont). 30 Soru Çöz. | 📺 ALES: 'Sayı Problemleri' Video İzle (30 dk).", check: "w1d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: Future Tenses. Zaman ifadelerini (Time expr.) ezberle. | 🛠️ Kodlama Zamanı.", check: "w1d3" },
-                        { day: "Perşembe", task: "YÖKDİL: Modals (Can, Could, Must, Should). 40 Soru Çöz. | 📺 ALES: 'Yeni Nesil Denklem' Video İzle.", check: "w1d4" },
-                        { day: "Cuma", task: "YÖKDİL: Perfect Tenses (Present Perfect). En önemli konu! 50 Soru Çöz.", check: "w1d5" },
-                        { day: "Cumartesi", task: "🎯 DENEME: Mini YÖKDİL Denemesi (İlk 20 soru tipi). Analiz Yap.", check: "w1d6" },
-                        { day: "Pazar", task: "TEKRAR: Kelime Defterini oku. | 📺 ALES: Sayısal Mantık 1 Video.", check: "w1d7" }
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w1d1" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w1d2" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w1d3" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w1d4" }
                     ]
                 },
                 {
-                    title: "HAFTA 2: Cümle Yapıları (Passive & If)",
-                    date: "19 - 25 Ocak 2026",
-                    focus: "Yapı Bilgisi",
+                    title: "HAFTA 2: Hızlandırılmış Rutin (Tenses & Modals)",
+                    date: "22 - 28 Haziran 2026",
+                    focus: "Gramer & Okuma",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Passive Voice (Edilgen). 'Be + V3' yapısını metinlerde bul.", check: "w2d1" },
-                        { day: "Salı", task: "YÖKDİL: Causatives (Ettirgen). 30 Soru. | 📺 ALES: 'Yaş Problemleri' Taktik Video.", check: "w2d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: If Clauses (Type 0, 1, 2). Formülleri ezberleme, mantığı kap. | 🚨 YÖKDİL BAŞVURUSU YAP!", check: "w2d3" },
-                        { day: "Perşembe", task: "YÖKDİL: If Clauses (Type 3 & Mixed). 40 Soru. | 📺 ALES: 'Grafik Okuma' Video.", check: "w2d4" },
-                        { day: "Cuma", task: "YÖKDİL: Okuma Günü. Kendi alanında (Fen/Sosyal) 2 makale oku.", check: "w2d5" },
-                        { day: "Cumartesi", task: "🎯 TARAMA: Tense + Modal + Passive karışık 60 soru çöz.", check: "w2d6" },
-                        { day: "Pazar", task: "Kelime Tekrarı (50 Kelimeye ulaş). | 📺 ALES: Mantık Sorusu Çöz.", check: "w2d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w2d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w2d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Tenses & Modals gramer kurallarının testi.", check: "w2d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w2d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w2d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w2d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w2d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 3: Uzun Cümleler (Clauses)",
-                    date: "26 Ocak - 1 Şubat 2026",
-                    focus: "Çeviri",
+                    title: "HAFTA 3: Hızlandırılmış Rutin (Passive & If Clauses)",
+                    date: "29 Haziran - 5 Temmuz 2026",
+                    focus: "Yapı & Cümle",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Noun Clauses (That, What, Who). Cümlenin öznesini bulma.", check: "w3d1" },
-                        { day: "Salı", task: "YÖKDİL: Relative Clauses (Who, Which, That). 40 Soru. | 📺 ALES: 'Hız Problemleri' Video.", check: "w3d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: Reductions (Kısaltmalar). Zor konudur, dikkatli izle. | 🛠️ Proje Günü.", check: "w3d3" },
-                        { day: "Perşembe", task: "YÖKDİL: Çeviri Soruları Taktikleri. Yüklemden yakalama. | 📺 ALES: 'Şekil Yetenek' Video.", check: "w3d4" },
-                        { day: "Cuma", task: "YÖKDİL: Cümle Tamamlama (İlk bakış). Bağlaçsız çözme.", check: "w3d5" },
-                        { day: "Cumartesi", task: "🎯 DENEME: Geçmiş Yıl Çıkmış Sorular (İlk 40 soru).", check: "w3d6" },
-                        { day: "Pazar", task: "Analiz ve Dinlenme. Başvuruyu kontrol et (Son günler!).", check: "w3d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w3d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w3d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Passive & If Clauses gramer kurallarının testi.", check: "w3d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w3d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w3d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w3d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w3d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 4: BAĞLAÇLAR (Kritik Hafta)",
-                    date: "2 - 8 Şubat 2026",
-                    focus: "Puan Deposu",
+                    title: "HAFTA 4: Hızlandırılmış Rutin (Clauses - Relative & Noun)",
+                    date: "6 - 12 Temmuz 2026",
+                    focus: "Uzun Cümleler",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Zıtlık Bağlaçları (However, Although, Despite). Liste yap.", check: "w4d1" },
-                        { day: "Salı", task: "YÖKDİL: Sebep-Sonuç (Because, Therefore, Thus). 40 Soru. | 📺 ALES: 'İşçi Problemleri'.", check: "w4d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: Ek Bilgi & Örnekleme (Moreover, For example). | 🛠️ Kodlama Serbest.", check: "w4d3" },
-                        { day: "Perşembe", task: "YÖKDİL: Zaman & Koşul Bağlaçları (When, While, Unless). | 📺 ALES: 'Mantık-Tablo'.", check: "w4d4" },
-                        { day: "Cuma", task: "YÖKDİL: Cümle Tamamlama (Bağlaç Odaklı). En çok buradan soru gelir.", check: "w4d5" },
-                        { day: "Cumartesi", task: "🎯 BAĞLAÇ KAMPI: 100 Soru Bağlaç çözümü (Karma).", check: "w4d6" },
-                        { day: "Pazar", task: "Kelime: Bağlaç listesini duvarına as. | 📺 ALES: Sözel Mantık (Çerez niyetine).", check: "w4d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w4d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w4d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Noun & Relative Clauses gramer kurallarının testi.", check: "w4d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w4d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w4d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w4d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w4d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 5: Edatlar ve Kelime",
-                    date: "9 - 15 Şubat 2026",
-                    focus: "Ezber",
+                    title: "HAFTA 5: Hızlandırılmış Rutin (Bağlaçlar)",
+                    date: "13 - 19 Temmuz 2026",
+                    focus: "Bağlaç Odaklı",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Prepositions (In, On, At, By). Kalıp ifadeler.", check: "w5d1" },
-                        { day: "Salı", task: "YÖKDİL: Gerund / Infinitive (To go vs Going). 30 Soru. | 📺 ALES: 'Karışım Problemleri'.", check: "w5d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: Phrasal Verbs (Carry out, Find out). En çok çıkan 20 tanesi.", check: "w5d3" },
-                        { day: "Perşembe", task: "YÖKDİL: Cloze Test Taktikleri (Boşluk doldurma). | 📺 ALES: 'Küp/Zar Soruları'.", check: "w5d4" },
-                        { day: "Cuma", task: "YÖKDİL: Kelime Tekrarı (Synonyms - Eş Anlamlılar).", check: "w5d5" },
-                        { day: "Cumartesi", task: "🎯 DENEME: Süre tutarak 80 soruluk deneme çöz.", check: "w5d6" },
-                        { day: "Pazar", task: "Deneme Analizi. Yanlış yaptığın konuları not al.", check: "w5d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w5d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w5d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Bağlaç (Conjunctions) kurallarının testi ve tekrarı.", check: "w5d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w5d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w5d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w5d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w5d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 6: Okuma ve Soru Tipleri",
-                    date: "16 - 22 Şubat 2026",
-                    focus: "Skill",
+                    title: "HAFTA 6: Hızlandırılmış Rutin (Edat & Kısaltmalar)",
+                    date: "20 - 26 Temmuz 2026",
+                    focus: "Edat & Kısaltma",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: Paragraf Tamamlama & Akışı Bozan Cümle.", check: "w6d1" },
-                        { day: "Salı", task: "YÖKDİL: Yakın Anlamlı Cümle (Restatement). | 📺 ALES: 'Permütasyon' (Zorlama).", check: "w6d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: Okuma Parçası (Reading). Günde 3 parça analiz.", check: "w6d3" },
-                        { day: "Perşembe", task: "YÖKDİL: Reading Taktikleri (Skimming & Scanning). | 📺 ALES: 'Olasılık'.", check: "w6d4" },
-                        { day: "Cuma", task: "YÖKDİL: 60 Soru karışık deneme (Fen/Sosyal alanına göre).", check: "w6d5" },
-                        { day: "Cumartesi", task: "🎯 FULL DENEME: Sabah 10:00'da başla. Telefon kapalı.", check: "w6d6" },
-                        { day: "Pazar", task: "Haftalık Analiz. Kelime tekrarı. | 📺 ALES: Geometri (Üçgenler).", check: "w6d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w6d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w6d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Prepositions (Edatlar) & Reductions (Kısaltmalar) testi.", check: "w6d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w6d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w6d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w6d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w6d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 7: Son Viraj (Full Deneme)",
-                    date: "23 Şubat - 1 Mart 2026",
-                    focus: "Hız",
+                    title: "HAFTA 7: Hızlandırılmış Rutin (Karma Tarama)",
+                    date: "27 Temmuz - 2 Ağustos 2026",
+                    focus: "Karma Tarama",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL: 2019-2020 Çıkmış Soruları Çöz.", check: "w7d1" },
-                        { day: "Salı", task: "YÖKDİL: 2021 Çıkmış Soruları Çöz. | 📺 ALES: Geometri (Dörtgenler).", check: "w7d2" },
-                        { day: "Çarşamba", task: "YÖKDİL: 2022 Çıkmış Soruları Çöz.", check: "w7d3" },
-                        { day: "Perşembe", task: "YÖKDİL: 2023 Çıkmış Soruları Çöz. | 📺 ALES: Geometri (Çember).", check: "w7d4" },
-                        { day: "Cuma", task: "YÖKDİL: Yanlış defterini baştan sona oku. Kelimelere bak.", check: "w7d5" },
-                        { day: "Cumartesi", task: "🎯 SON PROVA: 2025 veya 2024 Çıkmış Soruları (Sınav ciddiyetiyle).", check: "w7d6" },
-                        { day: "Pazar", task: "Dinlenme & Motivasyon. Sınav yerini öğren.", check: "w7d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL Reading: 3-4 uzun paragraf analizi ve çevirisi. Soru çözmekten ziyade cümlenin yapısını parçalama.", evening: "Kelime & Hata: Aralıklı tekrar (Anki) ile 30 yeni kelime + Sabahki metinlerin bilmediğiniz kelimeleri.", check: "w7d1" },
+                        { day: "Salı", morning: "YÖKDİL Soru Tipleri: Cümle tamamlama ve çeviri odaklı 40 soru (Aktif Geri Çağırma pratiği).", evening: "ALES Isınması: 40 Soru ALES Sayısal Pratik. Sadece hızı korumak için, süre tutarak.", check: "w7d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL Reading: Cloze test ve paragraf soruları.", evening: "Kelime & Dilbilgisi: Kelime tekrarı + Tüm gramer konularını içeren karma tarama testi.", check: "w7d3" },
+                        { day: "Perşembe", morning: "YÖKDİL Paragraf: 5 farklı paragraf sorusu, kelimelerin bağlamdan çıkarım pratiği.", evening: "ALES Isınması: 40 Soru ALES Sözel Mantık veya Sayısal Mantık.", check: "w7d4" },
+                        { day: "Cuma", morning: "YÖKDİL Mini Deneme: Sadece Paragraf ve Kelime kısımlarından oluşan 40 soruluk karma test.", evening: "Haftalık Analiz: Hafta boyu yapılan yanlışların nedenlerinin deftere işlenmesi.", check: "w7d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON: 10:15 - 13:15 arası hiç kalkmadan YÖKDİL çıkmış soru çözümü.", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınavın kontrolü, yanlışların tespiti. Öğrenilmeyen kelimelerin Anki'ye girilmesi.", check: "w7d6" },
+                        { day: "Pazar", morning: "ALES Günü: 10:15'te 1 adet tam ALES Denemesi veya branş denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel deşarj, tamamen dinlenme. Ertesi haftaya hazırlık.", check: "w7d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 8: SINAV HAFTASI",
-                    date: "2 - 8 Mart 2026",
-                    focus: "Final",
+                    title: "HAFTA 8: YÖKDİL Sınav Haftası",
+                    date: "3 - 9 Ağustos 2026",
+                    focus: "Sınav & Dinlenme",
                     days: [
-                        { day: "Pazartesi", task: "Son tekrarlar. Yeni konu çalışma.", check: "w8d1" },
-                        { day: "Salı", task: "Bağlaç listesini son kez gözden geçir.", check: "w8d2" },
-                        { day: "Çarşamba", task: "Hafif okuma yap. Proje işlerini azalt.", check: "w8d3" },
-                        { day: "Perşembe", task: "Çıkmış sorulardaki kelimelere göz at.", check: "w8d4" },
-                        { day: "Cuma", task: "Fiziksel ve zihinsel dinlenme.", check: "w8d5" },
-                        { day: "Cumartesi", task: "Erken yatış. Sınav belgelerini hazırla.", check: "w8d6" },
-                        { day: "Pazar", task: "🚀 YÖKDİL SINAVI (Başarılar Mühendis Bey!)", check: "w8d7" }
+                        { day: "Pazartesi", morning: "YÖKDİL: Son 3 yılın çıkmış sorularından karma test (20-30 soru).", evening: "Kelime & Hata Defteri tekrarı (Anki vb.).", check: "w8d1" },
+                        { day: "Salı", morning: "YÖKDİL: Bağlaçlar ve Edatlar (Prepositions) hızlı konu tekrarı.", evening: "ALES Isınması: 20 soru Sayısal Mantık (zihni yormadan hafif pratik).", check: "w8d2" },
+                        { day: "Çarşamba", morning: "YÖKDİL: Kelime & Yakın Anlam (Restatement) taktiklerini gözden geçirme.", evening: "Hata Analizi: Bugüne kadar yapılan tüm deneme yanlışlarının üzerinden geçilmesi.", check: "w8d3" },
+                        { day: "Perşembe", morning: "YÖKDİL: Hafif İngilizce makale okuması ve cümle analizi.", evening: "ALES Isınması: 20 soru Sözel Mantık.", check: "w8d4" },
+                        { day: "Cuma", morning: "YÖKDİL: Genel deneme analizi ve son eksik kontrolü.", evening: "Zihinsel Deşarj: Ders çalışmayı bırakma, hafif yürüyüş ve gevşeme.", check: "w8d5" },
+                        { day: "Cumartesi", morning: "Dinlenme & Sınav Giriş Belgesi Kontrolü (Sınav yerini görme).", morningTime: "10:15", evening: "Erken Uyuş: Sınav günü hazırlıkları.", check: "w8d6" },
+                        { day: "Pazar", morning: "🚀 YÖKDİL SINAV GÜNÜ! (Başarılar dileriz!)", morningTime: "10:15", evening: "BÜYÜK DİNLENME: Akşam zihinsel deşarj ve ALES planı için dinlenme.", check: "w8d7" }
                     ]
                 }
             ],
             phase2: [
                 {
-                    title: "HAFTA 9: ALES Start (Temel Konular)",
-                    date: "9 - 15 Mart 2026",
-                    focus: "Matematik",
+                    title: "HAFTA 9: ALES Start & Temel Matematik",
+                    date: "17 - 23 Ağustos 2026",
+                    focus: "Temel Cebir [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "YÖKDİL Yorgunluğu atma. ALES planını gözden geçir.", check: "w9d1" },
-                        { day: "Salı", task: "ALES: Temel Kavramlar & Sayı Basamakları (Hızlı tekrar).", check: "w9d2" },
-                        { day: "Çarşamba", task: "ALES: Bölme-Bölünebilme & Asal Çarpanlar.", check: "w9d3" },
-                        { day: "Perşembe", task: "ALES: Rasyonel & Ondalık Sayılar (İşlem hatası yapma!).", check: "w9d4" },
-                        { day: "Cuma", task: "ALES: Basit Eşitsizlikler & Mutlak Değer.", check: "w9d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 1: Seviye tespiti yap (Süre tutma).", check: "w9d6" },
-                        { day: "Pazar", task: "Analiz. Türkçe Paragraf Rutinine başla (Günde 20 soru).", check: "w9d7" }
+                        { day: "Pazartesi", morning: "ALES: Sayılar ve Temel Kavramlar çalışması. Aktif Geri Çağırma ile test et.", evening: "Sözel Mantık: Temel kurallar & Tablo kurma taktikleri videosu.", check: "w9d1" },
+                        { day: "Salı", morning: "ALES: Bölme-Bölünebilme & Asal Sayılar konusu ve testi.", evening: "ALES Sözel Mantık: Temel sıralama soruları çözümü.", check: "w9d2" },
+                        { day: "Çarşamba", morning: "ALES: Rasyonel ve Ondalık Sayılar (İşlem hatası yapmama odaklı pratik).", evening: "ALES Türkçe: Uzun paragraf okuması ve 15 paragraf sorusu analizi.", check: "w9d3" },
+                        { day: "Perşembe", morning: "ALES: Basit Eşitsizlikler ve Mutlak Değer konusu. Aktif Geri Çağırma.", evening: "Sözel Mantık: Yön ve konum belirleme soruları.", check: "w9d4" },
+                        { day: "Cuma", morning: "ALES: Üslü ve Köklü Sayılar temel pratikleri.", evening: "Türkçe: Paragrafta ana düşünce soru tipleri çalışması.", check: "w9d5" },
+                        { day: "Cumartesi", morning: "ALES Mini Branş Denemesi (Matematik - Cebir kısmı).", morningTime: "10:15 - 13:15", evening: "Yanlış çözülen matematik sorularının detaylı analizi.", check: "w9d6" },
+                        { day: "Pazar", morning: "ALES Mini Branş Denemesi (Türkçe - Anlam kısmı).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Haftalık dinlenme ve zihinsel deşarj.", check: "w9d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 10: Denklem & Üslü-Köklü",
-                    date: "16 - 22 Mart 2026",
-                    focus: "Cebir",
+                    title: "HAFTA 10: ALES Problemler Başlangıç",
+                    date: "24 - 30 Ağustos 2026",
+                    focus: "Problemler [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "ALES: Üslü Sayılar (Yeni nesil sorular).", check: "w10d1" },
-                        { day: "Salı", task: "ALES: Köklü Sayılar (Kök dışına çıkarma).", check: "w10d2" },
-                        { day: "Çarşamba", task: "ALES: Çarpanlara Ayırma (Hız kazandırır).", check: "w10d3" },
-                        { day: "Perşembe", task: "ALES: Oran - Orantı (Problemlerin temeli).", check: "w10d4" },
-                        { day: "Cuma", task: "ALES: Denklem Çözme Pratikleri.", check: "w10d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 2: Süre tutmaya başla.", check: "w10d6" },
-                        { day: "Pazar", task: "Paragraf çöz (20 soru).", check: "w10d7" }
+                        { day: "Pazartesi", morning: "ALES: Sayı Problemleri (Denklem kurma mantığı). Aktif Geri Çağırma.", evening: "Sözel Mantık: 3 bilinmeyenli tablo kurma taktikleri.", check: "w10d1" },
+                        { day: "Salı", morning: "ALES: Kesir Problemleri (Şekil ve kutu yöntemleri). Aktif Geri Çağırma.", evening: "ALES Sözel Mantık: Çıkmış karma soruların analizi.", check: "w10d2" },
+                        { day: "Çarşamba", morning: "ALES: Yaş Problemleri (Tablo yöntemi). Aktif Geri Çağırma.", evening: "ALES Türkçe: Paragrafta yardımcı düşünce soru tipleri çalışması.", check: "w10d3" },
+                        { day: "Perşembe", morning: "ALES: İşçi ve Havuz Problemleri (Formülsüz mantık). Aktif Geri Çağırma.", evening: "Sözel Mantık: Sıralama ve yerleştirme karma testi.", check: "w10d4" },
+                        { day: "Cuma", morning: "ALES: Hareket (Hız) Problemleri (Mühendis yaklaşımları).", evening: "Türkçe: Paragrafta yapı ve akış değiştirme soruları.", check: "w10d5" },
+                        { day: "Cumartesi", morning: "ALES Problemler Karma Testi (40 Soru).", morningTime: "10:15 - 13:15", evening: "Problem çözme hız analizi (Hangi soru tipinde yavaş kalıyorum?).", check: "w10d6" },
+                        { day: "Pazar", morning: "ALES Türkçe Paragraf Kampı (30 Soru).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Zihinsel dinlenme.", check: "w10d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 11: Problemler 1 (Başvuru Haftası)",
-                    date: "23 - 29 Mart 2026",
-                    focus: "Problemler",
+                    title: "HAFTA 11: İleri Problemler & Sayısal Mantık",
+                    date: "31 Ağustos - 6 Eylül 2026",
+                    focus: "Sayısal Mantık [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "🚨 ALES BAŞVURUSU YAP (25 Mart'ta açılıyor). Sayı Problemleri.", check: "w11d1" },
-                        { day: "Salı", task: "ALES: Kesir Problemleri (Şekilli sorular).", check: "w11d2" },
-                        { day: "Çarşamba", task: "ALES: Yaş Problemleri (Tablo kurma).", check: "w11d3" },
-                        { day: "Perşembe", task: "ALES: İşçi - Havuz Problemleri (Formülsüz çözüm).", check: "w11d4" },
-                        { day: "Cuma", task: "ALES: Hareket (Hız) Problemleri. (Mühendis işi).", check: "w11d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 3: Çıkmış sorulardan çöz.", check: "w11d6" },
-                        { day: "Pazar", task: "Sayısal Mantık videosu izle.", check: "w11d7" }
+                        { day: "Pazartesi", morning: "ALES: Yüzde - Kar - Zarar Problemleri. Aktif Geri Çağırma.", evening: "Sözel Mantık: Hızlı tablo kurma pratikleri.", check: "w11d1" },
+                        { day: "Salı", morning: "ALES: Karışım Problemleri. Aktif Geri Çağırma.", evening: "Sözel Mantık: Zor seviye çıkmış soru çözümleri.", check: "w11d2" },
+                        { day: "Çarşamba", morning: "ALES: Grafik Problemleri (Daire, Sütun, Çizgi grafikleri okuma).", evening: "ALES Türkçe: Paragraftan çıkarım yapma soru tipleri.", check: "w11d3" },
+                        { day: "Perşembe", morning: "ALES: Sayısal Mantık: Sayı yerleştirme ve oyun teorileri.", evening: "Sözel Mantık: Hızlı okuma ve tabloya aktarma.", check: "w11d4" },
+                        { day: "Cuma", morning: "ALES: Sayısal Mantık: Şekil ve örüntü yakalama soruları.", evening: "Türkçe: Paragrafta anlam bütünlüğü ve akış bozma soruları.", check: "w11d5" },
+                        { day: "Cumartesi", morning: "Say. Mantık & Grafik Problemleri Karma Test (40 Soru).", morningTime: "10:15 - 13:15", evening: "Grafik yorumlama hatalarının tespiti ve analizi.", check: "w11d6" },
+                        { day: "Pazar", morning: "ALES Sözel Mantık Tam Tarama Testi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN: Dinlenme.", check: "w11d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 12: Problemler 2 (Karışım & Yüzde)",
-                    date: "30 Mart - 5 Nisan 2026",
-                    focus: "Problemler",
+                    title: "HAFTA 12: ALES Geometri ve Grafik",
+                    date: "7 - 13 Eylül 2026",
+                    focus: "Geometri [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "ALES: Yüzde Problemleri. Kar-Zarar hesapları.", check: "w12d1" },
-                        { day: "Salı", task: "ALES: Karışım Problemleri. 🚨 Başvuru için SON GÜN (2 Nisan).", check: "w12d2" },
-                        { day: "Çarşamba", task: "ALES: Grafik Problemleri (Daire/Sütun grafiği).", check: "w12d3" },
-                        { day: "Perşembe", task: "ALES: Rutin Olmayan Problemler (Muhakeme).", check: "w12d4" },
-                        { day: "Cuma", task: "ALES: Kümeler.", check: "w12d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 4.", check: "w12d6" },
-                        { day: "Pazar", task: "Mantık - Grafik okuma çalışmaları.", check: "w12d7" }
+                        { day: "Pazartesi", morning: "Geometri: Üçgende Açı ve Kenar Bağıntıları.", evening: "Sözel Mantık: Çoklu eşleştirme soruları.", check: "w12d1" },
+                        { day: "Salı", morning: "Geometri: Özel Üçgenler (30-60-90, Muhteşem Üçlü) ve Alan.", evening: "Sözel Mantık: Kelime bazlı şifreleme ve mantık yürütme.", check: "w12d2" },
+                        { day: "Çarşamba", morning: "Geometri: Çokgenler ve Dörtgenler (Açı ve Alan formülleri).", evening: "ALES Türkçe: İki paragrafa bölme ve yer değiştirme soruları.", check: "w12d3" },
+                        { day: "Perşembe", morning: "Geometri: Kare, Dikdörtgen ve Paralelkenar (Katlama soruları).", evening: "Sözel Mantık: Tablosuz çözülebilen kısa mantık soruları.", check: "w12d4" },
+                        { day: "Cuma", morning: "Geometri: Çember ve Dairede Açı, Uzunluk, Alan.", evening: "Türkçe: Paragraf karma test (25 Soru).", check: "w12d5" },
+                        { day: "Cumartesi", morning: "Geometri & Grafik Problemleri Karma Çözüm (30 Soru).", morningTime: "10:15 - 13:15", evening: "Geometri formül kağıdı hazırlama ve eksik konu analizi.", check: "w12d6" },
+                        { day: "Pazar", morning: "ALES Türkçe Tam Branş Denemesi.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w12d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 13: Fonksiyon & İşlem",
-                    date: "6 - 12 Nisan 2026",
-                    focus: "Cebir",
+                    title: "HAFTA 13: Kümeler & Kombinasyon & Olasılık",
+                    date: "14 - 20 Eylül 2026",
+                    focus: "Olasılık [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "ALES: Fonksiyonlar (Grafik yorumlama).", check: "w13d1" },
-                        { day: "Salı", task: "ALES: İşlem & Modüler Aritmetik.", check: "w13d2" },
-                        { day: "Çarşamba", task: "ALES: Diziler ve Seriler (Örüntü yakalama).", check: "w13d3" },
-                        { day: "Perşembe", task: "ALES: Olasılık (Temel düzey).", check: "w13d4" },
-                        { day: "Cuma", task: "ALES: Permütasyon - Kombinasyon.", check: "w13d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 5.", check: "w13d6" },
-                        { day: "Pazar", task: "Analiz.", check: "w13d7" }
+                        { day: "Pazartesi", morning: "ALES: Kümeler ve Küme Problemleri çalışması.", evening: "Sözel Mantık: Hız odaklı tablo çizimleri.", check: "w13d1" },
+                        { day: "Salı", morning: "ALES: Fonksiyonlar ve Fonksiyon Grafikleri okuma.", evening: "Sözel Mantık: Karmaşık sıralama soruları.", check: "w13d2" },
+                        { day: "Çarşamba", morning: "ALES: İşlem & Modüler Aritmetik konusu.", evening: "Türkçe: Paragraf sorularında hızlı eleme yöntemleri.", check: "w13d3" },
+                        { day: "Perşembe", morning: "ALES: Permütasyon ve Kombinasyon (Seçme ve Sıralama mantığı).", evening: "Sözel Mantık: Çıkmış zor mantık soruları çözümü.", check: "w13d4" },
+                        { day: "Cuma", morning: "ALES: Olasılık (Koşullu Olasılık ve Bağımsız Olaylar).", evening: "Türkçe: Sözel Mantık & Paragraf karma testi.", check: "w13d5" },
+                        { day: "Cumartesi", morning: "Olasılık & Sayısal Mantık Karma Testi (40 Soru).", morningTime: "10:15 - 13:15", evening: "Hata Analizi: Kombinasyon ve olasılıkta kafa karışıklıklarını çözme.", check: "w13d6" },
+                        { day: "Pazar", morning: "ALES Matematik Cebir + Kombinasyon Karma Soru Çözümü.", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w13d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 14: SAYISAL MANTIK (Kral Konu)",
-                    date: "13 - 19 Nisan 2026",
-                    focus: "Mantık",
+                    title: "HAFTA 14: Gelişmiş Sayısal Mantık & Katı Cisimler",
+                    date: "21 - 27 Eylül 2026",
+                    focus: "İleri Mantık [FAZ 1]",
                     days: [
-                        { day: "Pazartesi", task: "Sayısal Mantık: Şekil Yetenek.", check: "w14d1" },
-                        { day: "Salı", task: "Sayısal Mantık: Sayı Yerleştirme (Sudoku mantığı).", check: "w14d2" },
-                        { day: "Çarşamba", task: "Sayısal Mantık: Tablo Yorumlama.", check: "w14d3" },
-                        { day: "Perşembe", task: "Sayısal Mantık: Küp Sayma / Katlama.", check: "w14d4" },
-                        { day: "Cuma", task: "Sayısal Mantık: Oyun/Turnuva soruları.", check: "w14d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 6.", check: "w14d6" },
-                        { day: "Pazar", task: "Mantık tekrarı.", check: "w14d7" }
+                        { day: "Pazartesi", morning: "Sayısal Mantık: Küp sayma, katlama, 3D şekil yetenek.", evening: "Sözel Mantık: Tablo hız rekoru denemeleri (Süreyle).", check: "w14d1" },
+                        { day: "Salı", morning: "Sayısal Mantık: Matrisler, Sudoku mantıklı yerleştirmeler.", evening: "Sözel Mantık: 4 bilinmeyenli zor sorular.", check: "w14d2" },
+                        { day: "Çarşamba", morning: "Geometri: Katı Cisimler (Prizma, Piramit, Silindir, Koni).", evening: "Türkçe: Paragraf akışını düzelten bağlaç kelimelerin tespiti.", check: "w14d3" },
+                        { day: "Perşembe", morning: "Geometri: Analitik Geometri (Noktanın ve Doğrunun Analitiği).", evening: "Sözel Mantık: Sözel mantık kurma taktikleri son tekrarı.", check: "w14d4" },
+                        { day: "Cuma", morning: "Sayısal Mantık: Denklem kurmalı ve dizilişli mantık soruları.", evening: "Türkçe: 30 soruluk paragraf analizi.", check: "w14d5" },
+                        { day: "Cumartesi", morning: "Sayısal Mantık + Geometri Karma Tarama (50 Soru).", morningTime: "10:15 - 13:15", evening: "Geometri ve sayısal mantık hatalarının detaylı çözümü.", check: "w14d6" },
+                        { day: "Pazar", morning: "ALES Tam Matematik Branş Denemesi (Süresiz).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w14d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 15: Geometri",
-                    date: "20 - 26 Nisan 2026",
-                    focus: "Geometri",
+                    title: "HAFTA 15: Faz 1 Kapanış & Faz 2 Hızlanma Start",
+                    date: "28 Eylül - 4 Ekim 2026",
+                    focus: "Hızlanma Geçişi [FAZ 2]",
                     days: [
-                        { day: "Pazartesi", task: "Geometri: Üçgenler (Açı, Kenar, Benzerlik).", check: "w15d1" },
-                        { day: "Salı", task: "Geometri: Özel Üçgenler & Alan.", check: "w15d2" },
-                        { day: "Çarşamba", task: "Geometri: Çokgenler & Dörtgenler.", check: "w15d3" },
-                        { day: "Perşembe", task: "Geometri: Kare, Dikdörtgen (Katlama soruları).", check: "w15d4" },
-                        { day: "Cuma", task: "Geometri: Çember & Daire (Analitik yok).", check: "w15d5" },
-                        { day: "Cumartesi", task: "🎯 ALES DENEME 7.", check: "w15d6" },
-                        { day: "Pazar", task: "Geometri formül tekrarı.", check: "w15d7" }
+                        { day: "Pazartesi", morning: "Faz 1 Eksik Konular: Cebir ve problem formüllerinin genel tekrarı.", evening: "Sözel Mantık: Bugüne kadar çözülmüş tüm zor mantık sorularının tekrar analizi.", check: "w15d1" },
+                        { day: "Salı", morning: "Faz 1 Eksik Konular: Geometri formülleri ve kuralları taraması.", evening: "ALES Türkçe: Paragraftaki kalıp soru tipleri üzerinden genel taktik incelemesi.", check: "w15d2" },
+                        { day: "Çarşamba", morning: "Sayısal Mantık formül ve yöntemlerinin son gözden geçirilmesi.", evening: "Türkçe: Sözel Mantık hata defteri analizi.", check: "w15d3" },
+                        { day: "Perşembe", morning: "ALES Matematik Branş Denemesi 1 (Süre tutularak, Hedef: 50 soru = 60 dakika).", evening: "Süre aşımı analizi (Hangi soru tipinde yavaş kaldım? Denklem kurarken mi yavaşım?).", check: "w15d4" },
+                        { day: "Cuma", morning: "ALES Türkçe Branş Denemesi 1 (Süre tutularak, Hedef: 50 soru = 60 dakika).", evening: "Süre aşımı analizi (Hangi paragraf tiplerinde süre kaybettim?).", check: "w15d5" },
+                        { day: "Cumartesi", morning: "ALES Matematik Branş Denemesi 2 (Süre tutularak).", morningTime: "10:15 - 13:15", evening: "Yanlış ve süre aşımı analizlerinin deftere işlenmesi.", check: "w15d6" },
+                        { day: "Pazar", morning: "ALES Türkçe Branş Denemesi 2 (Süre tutularak).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w15d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 16: Hızlanma Kampı",
-                    date: "27 Nisan - 3 Mayıs 2026",
-                    focus: "Hız",
+                    title: "HAFTA 16: Hızlanma ve ALES Başvurusu",
+                    date: "5 - 11 Ekim 2026",
+                    focus: "Zaman Yönetimi [FAZ 2]",
                     days: [
-                        { day: "Pazartesi", task: "Her gün 1 ALES Denemesi (2020 Çıkmış).", check: "w16d1" },
-                        { day: "Salı", task: "Her gün 1 ALES Denemesi (2021 Çıkmış).", check: "w16d2" },
-                        { day: "Çarşamba", task: "Her gün 1 ALES Denemesi (2022 Çıkmış).", check: "w16d3" },
-                        { day: "Perşembe", task: "Her gün 1 ALES Denemesi (2023 Çıkmış).", check: "w16d4" },
-                        { day: "Cuma", task: "Eksik olduğun konuya son bakış.", check: "w16d5" },
-                        { day: "Cumartesi", task: "Sayısal Mantık kampı (Sadece mantık çöz).", check: "w16d6" },
-                        { day: "Pazar", task: "Dinlenme.", check: "w16d7" }
+                        { day: "Pazartesi", morning: "ALES Matematik Branş Denemesi 3 (Süre tutarak, Hedef: 45 dk'da 40 soru).", evening: "Süre aşımı analizi (Problem çözme sürelerini düşürme yöntemleri).", check: "w16d1" },
+                        { day: "Salı", morning: "ALES Türkçe Branş Denemesi 3 (Süre tutarak, Hedef: 45 dk'da 40 soru).", evening: "Paragraf sorularında hız kazandırıcı eleme taktikleri.", check: "w16d2" },
+                        { day: "Çarşamba", morning: "ALES Matematik Branş Denemesi 4. | 🚨 ALES BAŞVURULARI AÇILDI! BAŞVURUNU YAP!", evening: "Süre aşımı analizi: Sayısal mantık sorularında hızlanma.", check: "w16d3" },
+                        { day: "Perşembe", morning: "ALES Türkçe Branş Denemesi 4 (Süre tutarak).", evening: "Sözel mantık tablosunu 3 dakikada kurma çalışmaları.", check: "w16d4" },
+                        { day: "Cuma", morning: "ALES Matematik Branş Denemesi 5 (Süre tutarak).", evening: "Hangi cebir soru tiplerinde işlem hatası yaptığının tespiti.", check: "w16d5" },
+                        { day: "Cumartesi", morning: "ALES Türkçe Branş Denemesi 5 (Süre tutarak).", morningTime: "10:15 - 13:15", evening: "Yanlış paragraf sorularının yapısal analizi.", check: "w16d6" },
+                        { day: "Pazar", morning: "ALES Tam Deneme (Geçmiş Yıl Çıkmış - 2020) (Süreli).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w16d7" }
                     ]
                 },
                 {
-                    title: "HAFTA 17: FİNAL HAFTASI",
-                    date: "4 - 10 Mayıs 2026",
-                    focus: "Final",
+                    title: "HAFTA 17: Limitleri Zorlama & Başvuru Sonu",
+                    date: "12 - 18 Ekim 2026",
+                    focus: "Süre Sınırı [FAZ 2]",
                     days: [
-                        { day: "Pazartesi", task: "Son 1 Deneme (2024/2025).", check: "w17d1" },
-                        { day: "Salı", task: "Çıkmış soruların analizi.", check: "w17d2" },
-                        { day: "Çarşamba", task: "Formül kağıdını oku. Zorlama.", check: "w17d3" },
-                        { day: "Perşembe", task: "Kafa dağıt. Projelerle ilgilenme.", check: "w17d4" },
-                        { day: "Cuma", task: "Fiziksel dinlenme.", check: "w17d5" },
-                        { day: "Cumartesi", task: "Sınav yerine git bak. Erken uyu.", check: "w17d6" },
-                        { day: "Pazar", task: "🚀 ALES SINAVI (Başarılar!)", check: "w17d7" }
+                        { day: "Pazartesi", morning: "ALES Matematik Branş Denemesi 6 (Hedef: Hızı koruma).", evening: "Süre aşımlarının nedenini bulma (Denklem kurarken mi yavaşım?).", check: "w17d1" },
+                        { day: "Salı", morning: "ALES Türkçe Branş Denemesi 6 (Hedef: Hızı koruma).", evening: "Türkçe Branş Denemesi Analizi ve hata defteri tekrarı.", check: "w17d2" },
+                        { day: "Çarşamba", morning: "ALES Matematik Branş Denemesi 7. | 🚨 ALES Başvurusu için son günler (Kapanış 15 Ekim!)", evening: "Süre aşımı analizi: Problemler.", check: "w17d3" },
+                        { day: "Perşembe", morning: "ALES Türkçe Branş Denemesi 7 (Süre tutarak).", evening: "Sözel Mantık: Hızlı okuma ve yerleştirme egzersizleri.", check: "w17d4" },
+                        { day: "Cuma", morning: "ALES Matematik Branş Denemesi 8 (Süre tutarak).", evening: "Matematik formülleri ve kuralları son kez tekrar et.", check: "w17d5" },
+                        { day: "Cumartesi", morning: "ALES Türkçe Branş Denemesi 8 (Süre tutarak).", morningTime: "10:15 - 13:15", evening: "Türkçe sorularında süre aşım nedenleri analizi.", check: "w17d6" },
+                        { day: "Pazar", morning: "ALES Tam Deneme (Geçmiş Yıl Çıkmış - 2021) (Süreli).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w17d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 18: Kararlı Tempoda Branş Denemeleri",
+                    date: "19 - 25 Ekim 2026",
+                    focus: "Hata Avcılığı [FAZ 2]",
+                    days: [
+                        { day: "Pazartesi", morning: "ALES Matematik Branş Denemesi 9 (Süre limitleriyle).", evening: "Hata analizi ve eksik konuların mini konu taramaları.", check: "w18d1" },
+                        { day: "Salı", morning: "ALES Türkçe Branş Denemesi 9 (Süre limitleriyle).", evening: "Türkçe: Sözel Mantık zor soru çözüm teknikleri incelemesi.", check: "w18d2" },
+                        { day: "Çarşamba", morning: "ALES Matematik Branş Denemesi 10.", evening: "Geometri soru çözme hız analizi.", check: "w18d3" },
+                        { day: "Perşembe", morning: "ALES Türkçe Branş Denemesi 10.", evening: "Paragraf sorularında hızlı karar verme pratikleri.", check: "w18d4" },
+                        { day: "Cuma", morning: "ALES Matematik Branş Denemesi 11.", evening: "Sayısal Mantık: Çıkmış zor soruları tekrar çözme.", check: "w18d5" },
+                        { day: "Cumartesi", morning: "ALES Türkçe Branş Denemesi 11.", morningTime: "10:15 - 13:15", evening: "Genel Türkçe net analizi ve eksik tespiti.", check: "w18d6" },
+                        { day: "Pazar", morning: "ALES Tam Deneme (Geçmiş Yıl Çıkmış - 2022) (Süreli).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w18d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 19: Faz 2 Kapanış & Sınav Kondisyonu Geçiş",
+                    date: "26 Ekim - 1 Kasım 2026",
+                    focus: "Simülasyon Geçişi [FAZ 2 / FAZ 3]",
+                    days: [
+                        { day: "Pazartesi", morning: "ALES Matematik Branş Denemesi 12 (Son hız denemesi).", evening: "Bugüne kadarki tüm branş denemesi hatalarının gözden geçirilmesi.", check: "w19d1" },
+                        { day: "Salı", morning: "ALES Türkçe Branş Denemesi 12 (Son hız denemesi).", evening: "Türkçe branş hatalarının ve sözel mantık çizimlerinin son analizi.", check: "w19d2" },
+                        { day: "Çarşamba", morning: "Matematik formül kağıdı ve geometri kuralları genel tekrarı.", evening: "Kelime/Kavram tekrarları (Anlam bilgisi için).", check: "w19d3" },
+                        { day: "Perşembe", morning: "Sayısal Mantık: Karışık zor soru tipleri çözümü.", evening: "Türkçe: Sözel Mantık zorlu şablon çalışmaları.", check: "w19d4" },
+                        { day: "Cuma", morning: "ALES Matematik & Türkçe karma soru tarama testi (50 Soru).", evening: "Sınav kondisyonu için odaklanma ve süre yönetimi stratejileri planı.", check: "w19d5" },
+                        { day: "Cumartesi", morning: "ALES Tam Deneme (Geçmiş Yıl Çıkmış - 2023) (Sınav ciddiyetiyle).", morningTime: "10:15 - 13:15", evening: "Denemenin derin analizi ve yanlış yapılan konuların tespiti.", check: "w19d6" },
+                        { day: "Pazar", morning: "TAM SİMÜLASYON 1 (Kurşun kalem, optik form, maske ve gerçek sınav şartlarıyla).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w19d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 20: Çıkmış Soru Kondisyon Kampı",
+                    date: "2 - 8 Kasım 2026",
+                    focus: "Kondisyon [FAZ 3]",
+                    days: [
+                        { day: "Pazartesi", morning: "Çıkmış ALES Matematik sorularının parçalı çözümü (Sayılar & Cebir - 25 Soru).", evening: "Çözülen çıkmış soruların detaylı analizleri.", check: "w20d1" },
+                        { day: "Salı", morning: "Çıkmış ALES Türkçe sorularının parçalı çözümü (Paragraf - 25 Soru).", evening: "Sözel Mantık çıkmış sorularının yapısal analizi.", check: "w20d2" },
+                        { day: "Çarşamba", morning: "Çıkmış ALES Matematik sorularının parçalı çözümü (Problemler - 20 Soru).", evening: "Problem denklemlerindeki yavaşlık noktalarının tespiti.", check: "w20d3" },
+                        { day: "Perşembe", morning: "Çıkmış ALES Türkçe sorularının parçalı çözümü (Sözel Mantık - 16 Soru).", evening: "Sözel mantık çizim hızlarının karşılaştırılması.", check: "w20d4" },
+                        { day: "Cuma", morning: "Çıkmış ALES Matematik sorularının parçalı çözümü (Sayısal Mantık & Geo - 20 Soru).", evening: "Geometri formüllerinin soru üzerindeki pratiklerinin kontrolü.", check: "w20d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON 2 (Çıkmış ALES Soruları - Gerçek sınav saatinde ve sessiz ortamda).", morningTime: "10:15 - 13:15", evening: "Derin Analiz: Sınav kontrolü ve yanlışların tespiti.", check: "w20d6" },
+                        { day: "Pazar", morning: "TAM SİMÜLASYON 3 (Çıkmış ALES Soruları - Gerçek sınav kurallarıyla).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w20d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 21: Zor Soru Kampı & Hata Analizi",
+                    date: "9 - 15 Kasım 2026",
+                    focus: "Hata Odaklı [FAZ 3]",
+                    days: [
+                        { day: "Pazartesi", morning: "Çıkmış ALES sorularından seçme zor soruların parçalı çözümü (Matematik).", evening: "Zor soruların pratik çözüm yolları ve pratik formül analizleri.", check: "w21d1" },
+                        { day: "Salı", morning: "Çıkmış ALES sorularından seçme zor soruların parçalı çözümü (Türkçe).", evening: "Türkçe hata defterindeki tüm yanlışların üzerinden geçilmesi.", check: "w21d2" },
+                        { day: "Çarşamba", morning: "Problemler ve Sayısal Mantık çıkmış karma soru çözümü (30 Soru).", evening: "Hata tespiti ve eksik kalan formüllerin kağıda not edilmesi.", check: "w21d3" },
+                        { day: "Perşembe", morning: "Geometri çıkmış karma soru çözümü (20 Soru).", evening: "Geometri kurallarının son pratikleri.", check: "w21d4" },
+                        { day: "Cuma", morning: "Sözel Mantık çıkmış karma soru çözümü (20 Soru).", evening: "Hata analizleri ve son tekrarlar.", check: "w21d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON 4 (2024-ALES/1 veya ALES/2 Soruları).", morningTime: "10:15 - 13:15", evening: "Sınavın kontrolü, yanlışların tespiti and hata defterine işlenmesi.", check: "w21d6" },
+                        { day: "Pazar", morning: "TAM SİMÜLASYON 5 (2024-ALES/3 veya benzer sınav ciddiyeti).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w21d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 22: Son Sınav Simülasyonları",
+                    date: "16 - 22 Kasım 2026",
+                    focus: "Simülasyon Kampı [FAZ 3]",
+                    days: [
+                        { day: "Pazartesi", morning: "ALES Çıkmış Sorular Parçalı Çözüm (Karışık Sayısal - 30 Soru).", evening: "Formül kağıdı ve Geometri son okumaları.", check: "w22d1" },
+                        { day: "Salı", morning: "ALES Çıkmış Sorular Parçalı Çözüm (Karışık Sözel - 30 Soru).", evening: "Sözel Mantık çizim yöntemleri ve taktiklerinin gözden geçirilmesi.", check: "w22d2" },
+                        { day: "Çarşamba", morning: "Sayısal Mantık çıkmış karma soru çözümü (25 Soru).", evening: "İşlem hatası yapılan noktaların tespiti.", check: "w22d3" },
+                        { day: "Perşembe", morning: "Geometri ve Problemler son tarama testi (25 Soru).", evening: "Hata Defterindeki tüm matematik sorularının son kez çözülmesi.", check: "w22d4" },
+                        { day: "Cuma", morning: "ALES Türkçe & Matematik karma mini deneme (40 Soru).", evening: "Zihinsel odaklanma ve sınav anı stres yönetimi teknikleri çalışması.", check: "w22d5" },
+                        { day: "Cumartesi", morning: "TAM SİMÜLASYON 6 (2025-ALES/1 veya ALES/2 Soruları).", morningTime: "10:15 - 13:15", evening: "Sınav kontrolü ve yanlış soru tiplerinin son analizleri.", check: "w22d6" },
+                        { day: "Pazar", morning: "TAM SİMÜLASYON 7 (2025-ALES/3 veya son güncel ALES denemesi).", morningTime: "10:15 - 13:15", evening: "SERBEST ZAMAN.", check: "w22d7" }
+                    ]
+                },
+                {
+                    title: "HAFTA 23: ALES Sınav Haftası",
+                    date: "23 - 29 Kasım 2026",
+                    focus: "Final & Sınav Günü",
+                    days: [
+                        { day: "Pazartesi", morning: "Son hafif çıkmış sorular çözümü (Matematik - 15 Soru).", evening: "Formül ve kural kağıtlarının gözden geçirilmesi.", check: "w23d1" },
+                        { day: "Salı", morning: "Son hafif çıkmış sorular çözümü (Türkçe - 15 Soru).", evening: "Hata defteri ve sözel mantık taktikleri son tekrarı.", check: "w23d2" },
+                        { day: "Çarşamba", morning: "Zihni yormadan hafif okuma ve kelime taramaları.", evening: "Son 3 yılın sınav analizlerinin genel olarak okunması.", check: "w23d3" },
+                        { day: "Perşembe", morning: "Very hafif sayısal ve sözel mantık pratikleri (10'ar soru).", evening: "Çalışmayı sonlandırma, kafa dağıtıcı ve rahatlatıcı aktiviteler.", check: "w23d4" },
+                        { day: "Cuma", morning: "Ders çalışmayı tamamen bırakma.", evening: "Fiziksel dinlenme, kaliteli uyku ve hafif yürüyüş.", check: "w23d5" },
+                        { day: "Cumartesi", morning: "Sınav yerini görme, sınav giriş belgesi ve kimlik hazırlıkları.", morningTime: "10:15", evening: "Erken uyku, sınav günü kıyafetleri ve eşyalarının hazırlanması.", check: "w23d6" },
+                        { day: "Pazar", morning: "🚀 ALES SINAV GÜNÜ! (Başarılar dileriz!)", morningTime: "10:15", evening: "BÜYÜK KUTLAMA: Sınav yorgunluğunu atma ve zihinsel deşarj!", check: "w23d7" }
                     ]
                 }
             ]
@@ -537,15 +645,21 @@
         }
 
         function createWeekHTML(week, index, phase) {
+            const isBlue = phase === 'phase1';
+            const accentBg = isBlue ? 'group-open:bg-blue-600' : 'group-open:bg-orange-600';
+            const accentText = isBlue ? 'group-open:text-blue-400' : 'group-open:text-orange-400';
+            const accentBorder = isBlue ? 'open:border-blue-500 hover:border-blue-500/50' : 'open:border-orange-500 hover:border-orange-500/50';
+            const checkboxHover = isBlue ? 'peer-hover:border-blue-400' : 'peer-hover:border-orange-400';
+
             return `
-            <details class="group bg-slate-900 border border-slate-700 rounded-xl overflow-hidden transition-all duration-300 hover:border-blue-500/50 open:bg-slate-800 open:shadow-xl open:border-blue-500">
+            <details class="group bg-slate-900 border border-slate-700 rounded-xl overflow-hidden transition-all duration-300 ${accentBorder} open:bg-slate-800 open:shadow-xl">
                 <summary class="flex items-center justify-between p-5 cursor-pointer select-none">
                     <div class="flex items-center gap-4">
-                        <div class="bg-slate-800 p-2 rounded-lg border border-slate-700 group-open:bg-blue-600 group-open:text-white transition-colors">
+                        <div class="bg-slate-800 p-2 rounded-lg border border-slate-700 ${accentBg} group-open:text-white transition-colors">
                             <i class="fa-regular fa-calendar-check text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg text-white group-open:text-blue-400">${week.title}</h3>
+                            <h3 class="font-bold text-lg text-white ${accentText}">${week.title}</h3>
                             <div class="flex items-center gap-3 text-sm text-slate-400">
                                 <span><i class="fa-regular fa-clock text-xs mr-1"></i>${week.date}</span>
                                 <span class="bg-slate-700/50 px-2 py-0.5 rounded text-xs border border-slate-600">${week.focus}</span>
@@ -559,21 +673,67 @@
                 </summary>
                 
                 <div class="border-t border-slate-700/50 bg-slate-900/50 p-4">
-                    <div class="grid gap-3">
-                        ${week.days.map(day => `
-                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-800/80 transition-colors border border-transparent hover:border-slate-700">
-                                <label class="checkbox-wrapper cursor-pointer relative mt-1">
-                                    <input type="checkbox" id="${day.check}" class="peer sr-only" onchange="toggleTask('${day.check}')">
-                                    <div class="w-5 h-5 border-2 border-slate-600 rounded flex items-center justify-center peer-hover:border-blue-400 transition-all bg-slate-900">
-                                        <i class="fa-solid fa-check text-xs hidden"></i>
+                    <div class="grid gap-4">
+                        ${week.days.map(day => {
+                            const hasSplit = day.morning && day.evening;
+                            if (!hasSplit) {
+                                return `
+                                <div class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-slate-800/80 transition-colors border border-transparent hover:border-slate-700 bg-slate-950/20">
+                                    <label class="checkbox-wrapper cursor-pointer relative mt-1 shrink-0">
+                                        <input type="checkbox" id="${day.check}" class="peer sr-only" onchange="toggleTask('${day.check}')">
+                                        <div class="w-5 h-5 border-2 border-slate-600 rounded flex items-center justify-center ${checkboxHover} transition-all bg-slate-900">
+                                            <i class="fa-solid fa-check text-xs hidden"></i>
+                                        </div>
+                                    </label>
+                                    <div>
+                                        <span class="block font-bold text-sm text-slate-300 mb-0.5">${day.day}</span>
+                                        <p class="text-sm text-slate-400 leading-snug">${day.task}</p>
                                     </div>
-                                </label>
-                                <div>
-                                    <span class="block font-bold text-sm text-slate-300 mb-0.5">${day.day}</span>
-                                    <p class="text-sm text-slate-400 leading-snug">${day.task}</p>
+                                </div>
+                                `;
+                            }
+
+                            return `
+                            <div class="flex flex-col gap-2.5 p-3.5 rounded-lg hover:bg-slate-800/80 transition-all border border-transparent hover:border-slate-700 bg-slate-950/20">
+                                <div class="flex items-center justify-between pb-1.5 border-b border-slate-800">
+                                    <span class="font-bold text-sm text-slate-200">${day.day}</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
+                                    <!-- Sabah Seansı -->
+                                    <div class="flex items-start gap-3 bg-slate-950/40 p-3 rounded-lg border border-slate-800/60 hover:border-slate-700 transition-all">
+                                        <label class="checkbox-wrapper cursor-pointer relative mt-0.5 shrink-0">
+                                            <input type="checkbox" id="${day.check}-m" class="peer sr-only" onchange="toggleTask('${day.check}-m')">
+                                            <div class="w-5 h-5 border-2 border-slate-600 rounded flex items-center justify-center ${checkboxHover} transition-all bg-slate-900">
+                                                <i class="fa-solid fa-check text-xs hidden"></i>
+                                            </div>
+                                        </label>
+                                        <div>
+                                            <span class="block text-xs font-bold text-amber-400/90 mb-1 flex items-center gap-1 flex-wrap">
+                                                <i class="fa-regular fa-sun"></i> ${day.morningTime || '07:00 - 08:30'} (Deep Work)
+                                            </span>
+                                            <p class="text-sm text-slate-300 leading-relaxed font-sans">${day.morning}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Akşam Seansı -->
+                                    <div class="flex items-start gap-3 bg-slate-950/40 p-3 rounded-lg border border-slate-800/60 hover:border-slate-700 transition-all">
+                                        <label class="checkbox-wrapper cursor-pointer relative mt-0.5 shrink-0">
+                                            <input type="checkbox" id="${day.check}-e" class="peer sr-only" onchange="toggleTask('${day.check}-e')">
+                                            <div class="w-5 h-5 border-2 border-slate-600 rounded flex items-center justify-center ${checkboxHover} transition-all bg-slate-900">
+                                                <i class="fa-solid fa-check text-xs hidden"></i>
+                                            </div>
+                                        </label>
+                                        <div>
+                                            <span class="block text-xs font-bold text-indigo-400/90 mb-1 flex items-center gap-1 flex-wrap">
+                                                <i class="fa-regular fa-moon"></i> ${day.eveningTime || '18:00 - 20:00'} (Pekiştirme)
+                                            </span>
+                                            <p class="text-sm text-slate-300 leading-relaxed font-sans">${day.evening}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        `).join('')}
+                            `;
+                        }).join('')}
                     </div>
                 </div>
             </details>
